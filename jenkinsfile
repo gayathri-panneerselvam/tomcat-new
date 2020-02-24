@@ -1,0 +1,27 @@
+pipeline {
+   agent any
+   tools {
+      jdk 'jdk'
+      maven 'maven'
+    }
+    stages{
+        stage('Clean workspace') {
+             steps {
+                echo 'Cleaning Workspace...'
+                deleteDir()
+            }
+        }
+        stage(checkout) {
+            steps {
+                git url: 'https://github.com/gayathri-panneerselvam/tomcat-new.git'
+            }
+        }
+        stage(build){
+            steps {
+                sh 'mvn package'
+                sh 'pwd'
+                  }
+        }
+     
+    }
+}
