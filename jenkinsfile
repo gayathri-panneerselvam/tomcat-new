@@ -4,6 +4,9 @@ pipeline {
       jdk 'jdk'
       maven 'maven'
     }
+    parameters {
+        string defaultValue: 'test', description: 'Enter branch name to build', name: 'branch_name', trim: false
+    }
     stages{
         stage('Clean workspace') {
              steps {
